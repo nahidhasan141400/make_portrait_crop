@@ -37,7 +37,7 @@ def remove_bg():
     input_image = file.read()
 
     # Call the utility function to process the image
-    final_image = remove_background_and_center_face(input_image, 'out.jpg')
+    final_image = remove_background_and_center_face(input_image)
     print(final_image)
 
     if final_image is None:
