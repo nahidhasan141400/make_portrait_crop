@@ -11,15 +11,17 @@ def create_gradient(width, height):
 
     for y in range(height):
         # Calculate the color for this row
-        # Light red (255, 200, 200) to Medium light red (255, 150, 150)
-        r = 255  # Red stays at 255
-        g = int(200 - (50 * (y / height)))  # Green decreases from 200 to 150
-        b = int(200 - (50 * (y / height)))  # Blue decreases from 200 to 150
+        # Lighter sky blue (175, 226, 255) to medium sky blue (70, 130, 180)
+        r = int(175 - (105 * (y / height)))  # Red decreases from 175 to 70
+        g = int(226 - (96 * (y / height)))   # Green decreases from 226 to 130
+        b = int(255 - (75 * (y / height)))   # Blue decreases from 255 to 180
         for x in range(width):
             gradient_image.putpixel((x, y), (r, g, b, 255))  # Set pixel color
-  # Set pixel color
 
     return gradient_image
+
+
+
 
 def remove_background_and_center_face(input_image, output_image_path=None):
     # Step 1: Remove background using rembg
