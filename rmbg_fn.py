@@ -7,18 +7,15 @@ import io
 
 def create_gradient(width, height):
     # Create a new image with RGBA mode
-    gradient_image = Image.new('RGBA', (width, height))
+    solid_image = Image.new('RGBA', (width, height))
 
-    for y in range(height):
-        # Calculate the color for this row
-        # Lighter sky blue (175, 226, 255) to medium sky blue (70, 130, 180)
-        r = int(175 - (105 * (y / height)))  # Red decreases from 175 to 70
-        g = int(226 - (96 * (y / height)))   # Green decreases from 226 to 130
-        b = int(255 - (75 * (y / height)))   # Blue decreases from 255 to 180
-        for x in range(width):
-            gradient_image.putpixel((x, y), (r, g, b, 255))  # Set pixel color
+    # Define a lighter sky blue color
+    lighter_sky_blue = (250, 250, 255, 255)  # RGB values for an even lighter sky blue with full opacity
 
-    return gradient_image
+    # Fill the entire image with the lighter sky blue color
+    solid_image.paste(lighter_sky_blue, [0, 0, width, height])
+
+    return solid_image
 
 
 
