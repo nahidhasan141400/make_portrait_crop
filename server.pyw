@@ -2,6 +2,7 @@ from flask import Flask, request, send_file
 from rmbg_fn import remove_background_and_center_face
 import io
 from flask_cors import CORS
+import os
 
 
 # Define your secret key
@@ -10,8 +11,10 @@ SECRET_KEY = "nahidhasan141400"
 
 app = Flask(__name__)
 # Configure CORS to allow specific origins
-# CORS(app, resources={r"/api/*": {"origins": ["http://192.168.5.76:5173", "https://edusync.dewanit.com"]}})
+CORS(app, resources={r"/api/*": {"origins": ["http://192.168.5.76:5173", "https://edusync.dewanit.com"]}})
 CORS(app)
+
+PORT = int(os.environ.get('PORT', 4000))
 
 @app.route('/',  methods=['GET'])
 def info():
@@ -53,5 +56,5 @@ def remove_bg():
 
 if __name__ == '__main__':
     context = ('./certificate.pem', './private_key.pem')
-    app.run(host='192.168.5.76',port=5055,debug=False,ssl_context=context)
+    app.run(host='192.168.5.76',port=PORT,debug=False,ssl_context=context)
     # app.run()
